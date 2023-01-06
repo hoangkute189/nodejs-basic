@@ -1,19 +1,16 @@
 import express from 'express';
 import configViewEngine from './configs/viewEngine';
+import initWebRoute from './route/web';
 require('dotenv').config(); // import .env để lấy port
 
 const port = process.env.PORT || 8080; // phuong an backup underfine khi lỗi port 
 const app = express();
 
+// setup view engine
 configViewEngine(app);
 
-app.get("/", (req,res) =>{
-    res.render('index.ejs')
-})
-
-app.get("/hoang", (req,res) =>{
-    res.send("Hello Hoang!")
-})
+// init web route
+initWebRoute(app);
 
 app.listen(port, () =>{
     console.log(`Your app was run at port ${port}`)
