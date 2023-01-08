@@ -14,6 +14,6 @@ configViewEngine(app);
 // init web route
 initWebRoute(app);
 
-app.listen(port, () =>{
+app.listen(port, () => {
     console.log(`Your app was run at port ${port}`)
 })
