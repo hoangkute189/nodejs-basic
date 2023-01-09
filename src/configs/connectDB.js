@@ -1,11 +1,25 @@
-import mysql from 'mysql2';
+import mysql from 'mysql2/promise';
 
-// create the connection to database
-const connection = mysql.createConnection({
+console.log("Creating connection pool...")
+
+const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  database: 'nodejsbasic'
-});
+  database: 'nodejsbasic',
+  // password: 'password'
+})
+
+module.exports = pool;
+
+// Cách làm cũ
+// import mysql from 'mysql2';
+
+// // create the connection to database
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   database: 'nodejsbasic'
+// });
 
 // // simple query
 // connection.query(
@@ -20,4 +34,4 @@ const connection = mysql.createConnection({
 //   }
 // );
 
-export default connection;
+// export default connection;
