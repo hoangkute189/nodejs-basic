@@ -8,6 +8,10 @@ require('dotenv').config(); // import .env để lấy port
 const port = process.env.PORT || 8080; // phuong an backup underfine khi lỗi port 
 const app = express();
 
+// Hỗ trợ gửi data từ phía client lên server
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 // setup view engine
 configViewEngine(app);
 

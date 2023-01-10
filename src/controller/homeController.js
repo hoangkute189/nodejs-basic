@@ -29,7 +29,7 @@ let getHomepage = async (req, res) => {
 }
 
 // Tạo router điều hướng trang
-let getDetailPage = async (req,res) => {
+let getDetailPage = async (req, res) => {
 
     let userId = req.params.id; // Lấy param id từ đường link url
 
@@ -39,6 +39,16 @@ let getDetailPage = async (req,res) => {
     return res.send(JSON.stringify(user))
 }
 
+let createNewUser = async (req, res) => {
+    console.log('Check request: ', req.body)
+    let { firstName, lastName, email, address } = req.body // req.body trả về object
+
+    await pool.execute('INSERT INTO user(firstName,lastName,email,address) VALUES (?, ?, ?, ?) ',
+        [firstName, lastName, email, address])
+
+    return res.redirect('/'); // redirect là 1 API của express trở về trang router mong muốn
+}
+
 module.exports = {
-    getHomepage, getDetailPage
+    getHomepage, getDetailPage, createNewUser
 }

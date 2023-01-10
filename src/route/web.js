@@ -5,12 +5,15 @@ let router = express.Router();
 
 const initWebRoute = (app) => {
     // write to use controller
-    router.get("/",homeController.getHomepage);
+    router.get("/", homeController.getHomepage);
 
     // Dùng string query khai báo param id
-    router.get("/details/user/:id",homeController.getDetailPage)
+    router.get("/details/user/:id", homeController.getDetailPage)
 
-    router.get("/hoang", (req,res) =>{
+    // Dùng post gửi data lên trang mới
+    router.post("/create-new-user", homeController.createNewUser)
+
+    router.get("/hoang", (req, res) => {
         res.send("Hello Hoang!")
     })
 
