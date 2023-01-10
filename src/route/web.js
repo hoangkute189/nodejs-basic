@@ -13,6 +13,12 @@ const initWebRoute = (app) => {
     // Dùng post gửi data lên trang mới
     router.post("/create-new-user", homeController.createNewUser)
 
+    router.post("/delete-user", homeController.deleteUser)
+
+    router.get("/update-user/:id", homeController.updateUser)
+
+    router.post("/post-update-user", homeController.postUpdateUser)
+
     router.get("/hoang", (req, res) => {
         res.send("Hello Hoang!")
     })
